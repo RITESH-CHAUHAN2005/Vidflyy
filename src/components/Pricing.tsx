@@ -101,9 +101,7 @@ const Pricing = () => {
             <div key={index} className="relative group">
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                  <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg animate-bounce-gentle">
-                    🔥 MOST POPULAR
-                  </div>
+                  
                 </div>
               )}
               
