@@ -1,15 +1,16 @@
-
 import { Play, TrendingUp, Users, Youtube, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/917355518761', '_blank');
   };
 
   const handleWatchDemo = () => {
-    // For now, redirect to WhatsApp for demo
-    handleWhatsAppClick();
+    navigate('/success-stories');
   };
 
   return (

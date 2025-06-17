@@ -4,55 +4,58 @@ import EstimateSection from "@/components/EstimateSection";
 import PricingInfo from "@/components/PricingInfo";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import ExampleCampaign from "@/components/ExampleCampaign";
 import { Check, Users, Eye, Heart, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const PricingPage = () => {
   const subscriptionPlans = [
     {
-      name: "Trial",
-      price: "₹1199",
-      period: "",
-      description: "YouTube Advertising",
+      name: "Trial Package",
+      price: "₹799",
+      originalPrice: "₹999",
+      description: "Perfect for Beginners",
       subscribers: "100-120 SUBSCRIBERS",
       popular: false,
-      badge: "POPULAR",
+      badge: "STARTER",
       features: [
-        "Views",
-        "Likes", 
-        "Comments",
-        "Subscribers",
-        "Engagement"
+        "Real audience engagement",
+        "Organic likes & comments", 
+        "Quality subscribers",
+        "24/7 support",
+        "Money-back guarantee"
       ]
     },
     {
-      name: "Beginner",
-      price: "₹2499",
-      period: "",
-      description: "YouTube Advertising",
+      name: "Trust Package",
+      price: "₹1,499",
+      originalPrice: "₹1,999",
+      description: "Most Popular Choice",
       subscribers: "250-300 SUBSCRIBERS",
       popular: true,
+      badge: "BESTSELLER",
       features: [
-        "Views",
-        "Likes",
-        "Comments", 
-        "Subscribers",
-        "Engagement"
+        "Premium targeting options",
+        "Enhanced engagement",
+        "Priority customer support",
+        "Detailed analytics report",
+        "Growth strategy consultation"
       ]
     },
     {
-      name: "Expert",
-      price: "₹8800",
-      period: "",
-      description: "YouTube Advertising",
+      name: "Expert Package",
+      price: "₹5,999",
+      originalPrice: "₹7,999",
+      description: "For Serious Creators",
       subscribers: "1000-1200 SUBSCRIBERS",
       popular: false,
+      badge: "PROFESSIONAL",
       features: [
-        "Views",
-        "Likes",
-        "Comments",
-        "Subscribers", 
-        "Engagement"
+        "Advanced demographic targeting",
+        "Multi-platform promotion",
+        "Dedicated account manager",
+        "Custom campaign strategy",
+        "Monthly performance reviews"
       ]
     }
   ];
@@ -114,7 +117,15 @@ const PricingPage = () => {
               </div>
               
               <div className="mb-4 animate-price-scale">
-                <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                  {plan.originalPrice && (
+                    <div className="text-right">
+                      <span className="text-lg text-gray-400 line-through block">{plan.originalPrice}</span>
+                      <span className="text-green-600 text-sm font-semibold">Save 20%</span>
+                    </div>
+                  )}
+                </div>
               </div>
               
               {plan.subscribers && (
@@ -139,6 +150,7 @@ const PricingPage = () => {
                     {feature === 'Comments' && <div className="h-4 w-4 rounded-full bg-gray-400"></div>}
                     {feature === 'Subscribers' && <Users className="h-4 w-4 text-gray-500" />}
                     {feature === 'Engagement' && <div className="h-4 w-4 rounded-full bg-gray-400 flex items-center justify-center"><span className="text-xs">+</span></div>}
+                    {!['Views', 'Likes', 'Comments', 'Subscribers', 'Engagement'].includes(feature) && <Check className="h-4 w-4 text-green-600" />}
                     <span>{feature}</span>
                   </div>
                 </li>
@@ -149,7 +161,7 @@ const PricingPage = () => {
               onClick={handleWhatsAppClick}
               className={`w-full py-3 transition-all duration-300 hover:scale-105 active:scale-95 animate-button-pulse ${plan.popular ? 'bg-red-600 hover:bg-red-700 text-white' : 'bg-red-600 hover:bg-red-700 text-white'}`}
             >
-              {title.includes('Subscription') ? 'BUY NOW' : 'CONTACT US'}
+              🚀 GET STARTED NOW
             </Button>
           </div>
         ))}
@@ -161,86 +173,29 @@ const PricingPage = () => {
     <div className="min-h-screen bg-white font-montserrat">
       <Navbar />
       
-      {/* Hero Section for Pricing Page */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Pricing <span className="text-red-600">Plans</span>
+      {/* Hero Section for Pricing Page with red themed background */}
+      <section className="py-20 bg-gradient-to-br from-red-50 to-pink-50 relative overflow-hidden">
+        {/* Enhanced Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-red-200 rounded-full opacity-15 animate-float"></div>
+          <div className="absolute top-1/2 right-20 w-16 h-16 bg-red-300 rounded-full opacity-20 animate-bounce-slow"></div>
+          <div className="absolute bottom-20 left-1/3 w-24 h-24 bg-red-100 rounded-full opacity-25 animate-pulse-slow"></div>
+          <div className="absolute top-1/4 right-1/4 w-18 h-18 bg-red-200 rounded-full opacity-10 animate-morph"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-22 h-22 bg-red-150 rounded-full opacity-15 animate-rotate-slow"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 animate-text-slide-up">
+            Pricing <span className="text-red-600 bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">Plans</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-delay">
             Choose the perfect plan to grow your YouTube channel and maximize your reach.
           </p>
         </div>
       </section>
 
-      {/* Estimate Section with Campaign Performance */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left Side - Campaign Performance */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 animate-card-float">
-              <div className="flex items-center gap-2 mb-6 p-3 bg-blue-50 rounded-lg">
-                <div className="h-5 w-5 bg-blue-600 rounded-full"></div>
-                <span className="text-blue-700 font-medium text-sm">You're protected by VIDFLYY's satisfaction guarantee!</span>
-              </div>
-
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Example Campaign Performance</h3>
-              <p className="text-gray-600 mb-6">
-                Curious about what VIDFLYY can do for your YouTube channel? Below are examples of potential reach from past campaigns at different budget levels.
-              </p>
-
-              <div className="mb-6">
-                <label className="block text-gray-700 font-medium mb-2">Enter budget (min. ₹500)</label>
-                <div className="flex gap-2">
-                  <div className="relative flex-1">
-                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">₹</span>
-                    <input
-                      type="number"
-                      placeholder="500"
-                      min="500"
-                      className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 transition-all duration-300 hover:scale-105">
-                    Estimate
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side - Estimated Reach */}
-            <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-8 text-white animate-card-rotate">
-              <h3 className="text-2xl font-bold mb-8">Estimated Potential Reach:</h3>
-              
-              <div className="space-y-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 animate-float">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Eye className="h-6 w-6 text-blue-200" />
-                    <span className="text-lg font-medium">Potential Views*</span>
-                  </div>
-                  <div className="text-3xl font-bold">25K - 45K</div>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 animate-float-delayed">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Users className="h-6 w-6 text-red-300" />
-                    <span className="text-lg font-medium">Potential Subscribers*</span>
-                  </div>
-                  <div className="text-3xl font-bold">2,000 - 3,200</div>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 animate-bounce-gentle">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Heart className="h-6 w-6 text-pink-300" />
-                    <span className="text-lg font-medium">Potential Likes*</span>
-                  </div>
-                  <div className="text-3xl font-bold">1,500 - 2,250</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Example Campaign Performance Section */}
+      <ExampleCampaign />
       
       {/* Subscription and Monetization Plans */}
       <section className="py-20 bg-white">
