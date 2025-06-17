@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize images and reduce reflows */
+img {
+  image-rendering: optimizeQuality;
+  image-rendering: -webkit-optimize-contrast;
+  will-change: auto;
+}
+
+/* GPU acceleration for animations */
+.animate-card-float,
+.animate-card-rotate,
+.hover-scale,
+.animate-icon-float,
+.animate-icon-pulse,
+.animate-float,
+.animate-float-delayed,
+.animate-bounce-gentle,
+.animate-scale-pulse,
+.animate-morph,
+.animate-gradient-shift {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Enhanced GSAP-style animations with improved performance */
+@keyframes cardFloat {
+  0%, 100% { transform: translate3d(0, 0px, 0) rotateY(0deg); }
+  50% { transform: translate3d(0, -10px, 0) rotateY(5deg); }
+}
+
+@keyframes cardRotate {
+  0% { transform: rotateY(0deg) rotateX(0deg) translateZ(0); }
+  25% { transform: rotateY(5deg) rotateX(2deg) translateZ(0); }
+  50% { transform: rotateY(0deg) rotateX(5deg) translateZ(0); }
+  75% { transform: rotateY(-5deg) rotateX(2deg) translateZ(0); }
+  100% { transform: rotateY(0deg) rotateX(0deg) translateZ(0); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0px, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+
+@keyframes floatDelayed {
+  0%, 100% { transform: translate3d(0, 0px, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translate3d(0, 0px, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
+
+@keyframes scalePulse {
+  0%, 100% { transform: scale(1) translateZ(0); }
+  50% { transform: scale(1.05) translateZ(0); }
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 50%; transform: scale(1) translateZ(0); }
+  25% { border-radius: 30%; transform: scale(1.1) translateZ(0); }
+  50% { border-radius: 40%; transform: scale(0.9) translateZ(0); }
+  75% { border-radius: 60%; transform: scale(1.05) translateZ(0); }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translate3d(0, 0px, 0) scale(1); }
+  50% { transform: translate3d(0, -5px, 0) scale(1.05); }
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1) translateZ(0); opacity: 1; }
+  50% { transform: scale(1.1) translateZ(0); opacity: 0.8; }
+}
+
+@keyframes textSlideUp {
+  0% { transform: translate3d(0, 20px, 0); opacity: 0; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+@keyframes textFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes featureSlideIn {
+  0% { transform: translate3d(-20px, 0, 0); opacity: 0; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+@keyframes checkBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateZ(0); }
+  40% { transform: translateY(-10px) translateZ(0); }
+  60% { transform: translateY(-5px) translateZ(0); }
+}
+
+@keyframes buttonPulse {
+  0%, 100% { transform: scale(1) translateZ(0); }
+  50% { transform: scale(1.02) translateZ(0); }
+}
+
+@keyframes priceScale {
+  0% { transform: scale(0.8) translateZ(0); opacity: 0; }
+  100% { transform: scale(1) translateZ(0); opacity: 1; }
+}
+
+/* Apply enhanced animations */
+.animate-card-float {
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+.animate-card-rotate {
+  animation: cardRotate 8s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 4s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounceGentle 3s ease-in-out infinite;
+}
+
+.animate-scale-pulse {
+  animation: scalePulse 4s ease-in-out infinite;
+}
+
+.animate-morph {
+  animation: morph 6s ease-in-out infinite;
+}
+
+.animate-icon-float {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.animate-icon-pulse {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+.animate-text-slide-up {
+  animation: textSlideUp 0.6s ease-out forwards;
+}
+
+.animate-text-fade-in {
+  animation: textFadeIn 0.8s ease-out forwards;
+}
+
+.animate-feature-slide-in {
+  animation: featureSlideIn 0.5s ease-out forwards;
+}
+
+.animate-check-bounce {
+  animation: checkBounce 2s infinite;
+}
+
+.animate-button-pulse {
+  animation: buttonPulse 3s ease-in-out infinite;
+}
+
+.animate-price-scale {
+  animation: priceScale 0.5s ease-out forwards;
+}
+
+/* Hover effects with GPU acceleration */
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+/* Performance optimization for mobile devices */
+@media (max-width: 768px) {
+  .animate-card-float,
+  .animate-card-rotate,
+  .animate-icon-float {
+    animation-duration: 4s;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .animate-morph {
+    animation: none;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhanced utilities */
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Optimized grid pattern background */
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+  background-size: 20px 20px;
+  will-change: auto;
+}
+
+/* Optimized loading */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Additional performance improvements */
+.performance-optimized {
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* Smooth scrolling enhancement */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Enhanced border radius for modern look */
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+/* Custom shadows for depth */
+.shadow-enhanced {
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
